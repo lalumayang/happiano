@@ -1,0 +1,97 @@
+
+.aa,.bb,.cc,.dd,.ee,.ff,.gg,.hh,.ii,.jj,.kk,.ll,.mm,.nn,.oo,.pp,.qq,.rr,.ss,.tt{/* button context */
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color:rgba(255, 255, 255, 0.938);
+  margin:8px;
+  padding:0 40px;
+
+  background-color: transparent;
+  border: 3px dotted #ffffff;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+}
+.aa:hover,.bb:hover,.cc:hover,.dd:hover,.ee:hover,.ff:hover,.gg:hover,.hh:hover,.ii:hover,.jj:hover,.kk:hover,.ll:hover,.mm:hover,.nn:hover,.oo:hover,.pp:hover,.qq:hover,.rr:hover,.ss:hover,.tt:hover {
+  /* 框 */
+  box-shadow: 0 0 10px 0 #ffffff inset, 0 0 20px 2px #ffffff;
+  border: 3px solid #ffffff;
+  /* 字 */
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 0.57);
+  transition: all 0.4s ease 0s;
+  /* -webkit-box-shadow: 0px 5px 40px -10px rgba(250, 250, 250, 0.57); */
+}
+.a,.b,.c,.d,.e,.f,.g,.h,.i,.j,.k,.l,.m,.n,.o,.p,.q,.r,.s,.t{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:200px;
+}
+.a{
+  background-color: rgb(255, 157, 10);
+}
+.b{
+  background-color: rgb(255, 210, 10);
+}
+.c{
+  background-color: rgb(255, 230, 0);
+}
+.d{
+  background-color: rgb(243, 231, 127);
+}
+
+.e{
+  background-color: rgb(22, 66, 107);
+}
+.f{
+  background-color: rgb(30, 97, 160);
+}
+.g{
+  background-color: rgb(20, 133, 240);
+}
+.h{
+  background-color: #7db9e5;
+}
+
+.i{
+  background-color:rgb(230, 44, 106);
+}
+.j{
+  background-color: rgb(231, 96, 141);
+}
+.k{
+  background-color: rgb(235, 137, 169);
+}
+.l{
+  background-color: rgb(243, 171, 195);
+}
+
+.m{
+  background-color: #7748b9;
+}
+.n{
+  background-color: #9966e0;
+}
+.o{
+  background-color: #b894e9;
+}
+.p{
+  background-color: #ceb6f0;
+}
+
+.q{
+  background-color: #00ccbb;
+}
+.r{
+  background-color: #44d9cd;
+}
+.s{
+  background-color: #77e3da;
+}
+.t{
+  background-color: #a0ece5;
+}
+
+/* https://palx.jxnblk.com/?ref=uxprocc */

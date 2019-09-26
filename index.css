@@ -1,0 +1,281 @@
+/*---------------------------------body-------------------------------------*/
+
+.index {
+    margin: 27vmin
+}
+
+#index_top {
+    background: url(img/piano.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    height: 80vmin;
+    font-style: italic;
+
+}
+
+.index .top {
+    color: #ff5e00d5;
+    text-align: center;
+    font-family: 'Concert One', sans-serif;
+    font-size: 13vmin;
+    letter-spacing: 4px;
+    text-shadow: 1vmin 1vmin #6817ff5e;
+
+}
+
+.index .mid {
+    color: #ff5e00d5;
+    text-align: center;
+    font-family: '微軟正黑體', sans-serif;
+    font-size: 3vmin;
+    font-weight: 600;
+    letter-spacing: 4px;
+
+}
+
+.index .mid font {
+    margin: 0px 15px;
+}
+
+.index hr {
+    border-top: 0.5vmin solid #ff7b00c0;
+    border-radius: 10px;
+    width: 100%;
+
+}
+
+.block {
+  background-image: linear-gradient(230deg,rgb(255, 111, 111), #fd3b00);
+    width: 100%;
+    height: 100%;
+    padding: 6vw 15vw;
+    text-align: center;
+    font-family: "微軟正黑體",sans-serif;
+    margin: 0;
+}
+
+.block h2 {
+    display: block;
+    color: #ffc6b5;
+    text-align: center;
+    font-size: 4vmin;
+    margin: 4vw 0 3vw 0;
+    font-weight: 500;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.block p {
+    color: #ffb598;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 3vmin;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    
+
+}
+
+.name span {
+    text-align: center;
+    letter-spacing: 3px;
+    color: #ff5e00;
+    font-size: 5vmin;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-weight: 900;
+}
+
+.name .shop {
+    letter-spacing: 9px;
+}
+
+.name .type {
+    letter-spacing: 9px;
+}
+
+.name p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 26px;
+    letter-spacing: 3px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #7723ff;
+}
+
+.name p:hover {
+    background-color: #5900ff9a;
+}
+
+
+
+.name a:hover {
+    text-decoration: none;
+}
+
+.pic {
+    margin:0px 40px 60px 40px;
+}
+
+.down {
+    background: #414141;
+    max-height: 250px;
+}
+
+.down h2 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px;
+    padding: 20px 0;
+}
+
+.down p {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12px;
+    padding: 20px 0;
+}
+
+.container .author{
+    padding: 5vw 0;
+}
+
+.author {
+    margin-bottom: 70px;
+}
+
+.col {
+    border: 4px solid #D9B3FF;
+}
+
+.pad {
+    padding-left: 50px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.pad a {
+    font-family: 'Oswald', sans-serif;
+}
+
+
+
+.bg-green {
+    background-image: linear-gradient(270deg,rgb(111, 0, 255), #fd5000);
+}
+
+/*導覽列字顏色*/
+
+.bg-green .navbar-nav .nav-link {
+    color: #917da5;
+}
+
+/*首頁導覽列字顏色*/
+
+.bg-green .navbar-brand,
+.bg-green .navbar-text {
+    color: #ffc4a2;
+    font-size: 32px;
+}
+
+.bg-green .navbar-brand:hover {
+    color:  #5500c479;
+}
+
+/*滑過導覽列變字顏色*/
+
+.bg-green .nav-item.active .nav-link,
+.bg-green .nav-item:hover .nav-link {
+    color: #351a50;
+}
+
+/*修改子選單文字連結顏色*/
+
+.bg-green .dropdown-item {
+    color: #b599d1;
+}
+
+/*滑過子項目變底色*/
+
+.bg-green .dropdown-item:hover {
+    background-color: #917da5;
+    color: #ffffff;
+}
+
+.look {
+    margin: 0 auto;
+}
+
+/*---------------------------------body-------------------------------------*/
+
+
+@media (max-width: 991px) {
+    .fast-and-fun-container {
+      height: 550px!important;
+    }
+  }
+  @media (max-width: 767px) {
+    .fast-and-fun-container {
+      height: 650px!important;
+    }
+  }
+  .content-container .mask-img-container {
+    height: 550px;
+    width: 45%;
+  }
+  @media (max-width: 1200px) {
+    .content-container .mask-img-container {
+      width: 50%;
+    }
+  }
+  @media (max-width: 991px) {
+    .content-container .mask-img-container {
+      width: 100%;
+      height: 346px;
+      float: none;
+      z-index: -1;
+      margin-top: 0;
+    }
+  }
+  .content-container .mask-img-container svg {
+    width: 140%;
+    height: 100%;
+  }
+  @media (max-width: 1199px) {
+    .content-container .mask-img-container svg {
+      width: 140%;
+    }
+  }
+  @media (max-width: 991px) {
+    .content-container .mask-img-container svg {
+      display: none;
+    }
+  }
+  @media (max-width: 991px) {
+    .fast_and_funny {
+      margin-top: 40px!important;
+    }
+  }
+  .fast_and_funny .line-text {
+    margin-top: 17px;
+  }
+  @media (max-width: 991px) {
+    .content-container .masked-img {
+      mask: none;
+      width: 100%;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .img-2 {
+      height: 300px;
+      margin-bottom: 40px; } }
+
+.content {
+        padding-bottom: 5vw;
+}
+

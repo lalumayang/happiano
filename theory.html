@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>HAPPY PIANO!</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="theory.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Condensed|Concert+One|Quicksand|Alegreya+Sans+SC|Ubuntu:400,700|Open+Sans+Condensed:300|Chathura" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js'></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <!-- sweetalert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-green pad">
+    <a class="navbar-brand" href="index.html">PIANO<span class="sr-only">(current)</span></a>
+    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-5 " id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link" href="begining.html">Beginner</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Professional</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">                        
+          <a class="dropdown-item" href="train.html">練習模式</a>
+          <a class="dropdown-item" href="socre.html">評分模式</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="test.html">Music Sheet</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="piano.html">Piano</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="theory.html">Music theory</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="a col-sm-6 col-lg-3"><button class="aa" onclick="clef()">CLEF</button></div>
+    <div class="b col-sm-6 col-lg-3"><button class="bb" onclick="time()">TIME SIGNATURE</button></div>
+    <div class="c col-sm-6 col-lg-3"><button class="cc" onclick="sign()">SHARP & FLAT SIGN</button></div>
+    <div class="d col-sm-6 col-lg-3"><button class="dd" onclick="key()">KEY SIGNATURE</button></div>
+    <div class="e col-sm-6 col-lg-3"><button class="ee" onclick="note()">MUSIC NOTE</button></div>
+    <div class="f col-sm-6 col-lg-3"><button class="ff" onclick="dotted()">DOTTED NOTE</button></div>
+    <div class="g col-sm-6 col-lg-3"><button class="gg" onclick="rest()">REST SYMBOLS</button></div>
+    <div class="h col-sm-6 col-lg-3"><button class="hh" onclick="five()">STAFF</button></div>
+    <div class="i col-sm-6 col-lg-3"><button class="ii" onclick="bar()">BAR</button></div>
+    <div class="j col-sm-6 col-lg-3"><button class="jj" onclick="repeat()">REPEAT SIGNS</button></div>
+    <div class="k col-sm-6 col-lg-3"><button class="kk" onclick="repeat1()">REPEAT SIGNS 1</button></div>
+    <div class="l col-sm-6 col-lg-3"><button class="ll" onclick="accidental()">ACCIDENTAL</button></div>
+    <div class="m col-sm-6 col-lg-3"><button class="mm" onclick="BWsign()">DYNAMIC MARKINGS</button></div>
+    <div class="n col-sm-6 col-lg-3"><button class="nn" onclick="BWsign1()">DYNAMIC MARKINGS 1</button></div>
+    <div class="o col-sm-6 col-lg-3"><button class="oo" onclick="BWsign2()">DYNAMIC MARKINGS 2</button></div>
+    <div class="p col-sm-6 col-lg-3"><button class="pp" onclick="linkLine()">LINK LINE</button></div>
+    <div class="q col-sm-6 col-lg-3"><button class="qq" onclick="Acciaccatura_notation()">ACCIACCATURA NOTATION</button></div>
+    <div class="r col-sm-6 col-lg-3"><button class="rr" onclick="pedal()">PEDAL</button></div>
+    <div class="s col-sm-6 col-lg-3"><button class="ss" onclick="scale_sharp()">SHARP SCALE</button></div>
+    <div class="t col-sm-6 col-lg-3"><button class="tt" onclick="scale_flat()">FLAT SCALE</button></div>
+  </div>
+  
+
+  <script>
+    function scale_sharp() {
+      Swal.fire({
+        title: '升調音階(Sharp Scale)',
+        imageUrl: './img/scale_sharp.png',
+        width:700,
+        imageAlt: 'Sharp Scale',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function scale_flat() {
+      Swal.fire({
+        title: '降調音階(Flat Scale)',
+        imageUrl: './img/scale_flat.png',
+        width:700,
+        imageAlt: 'Flat Scale',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function note() {
+      Swal.fire({
+        title: '音符(Music Note)',
+        imageUrl: './img/note.png',
+        width:650,
+        imageAlt: 'Music Note',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function rest() {
+      Swal.fire({
+        title: '休止符(Rest Symbols)',
+        imageUrl: './img/rest.png',
+        width:650,
+        imageAlt: 'Rest Symbols',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function time() {
+      Swal.fire({
+        title: '拍號(Time Signature)',
+        imageUrl: './img/time.png',
+        imageAlt: 'Time Signature',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function key() {
+      Swal.fire({
+        title: '調號(Key Signature)',
+        imageUrl: './img/key.png',
+        imageAlt: 'Key Signature',
+        width:900,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function sign() {
+      Swal.fire({
+        title: '升、降記號(Sharp & Flat Sign)',
+        imageUrl: './img/sign.png',
+        imageAlt: 'Sharp & Flat Sign',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function accidental() {
+      Swal.fire({
+        title: '臨時記號(Accidental)',
+        imageUrl: './img/accidental.png',
+        imageAlt: 'Accidental',
+        width:900,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function BWsign() {
+      Swal.fire({
+        title: '強弱記號(Dynamic Markings)',
+        imageUrl: './img/BWsign.png',
+        imageAlt: 'Dynamic Markings',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function BWsign1() {
+      Swal.fire({
+        title: '強弱記號(Dynamic Markings)',
+        imageUrl: './img/BWsign1.png',
+        imageAlt: 'Dynamic Markings',
+        width:1100,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function BWsign2() {
+      Swal.fire({
+        title: '強弱記號(Dynamic Markings)',
+        imageUrl: './img/BWsign2.png',
+        imageAlt: 'Dynamic Markings',
+        width:600,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function pedal() {
+      Swal.fire({
+        title: '踏板記號(Pedal)',
+        imageUrl: './img/pedal.png',
+        imageAlt: 'Pedal',
+        width:700,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function linkLine() {
+      Swal.fire({
+        title: '連結線',
+        imageUrl: './img/linkLine.png',
+        imageAlt: 'Link Line',
+        width:1000,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function dotted() {
+      Swal.fire({
+        title: '附點音符(Dotted Note)',
+        imageUrl: './img/dotted.png',
+        imageAlt: 'Dotted Note',
+        width:650,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function five() {
+      Swal.fire({
+        title: '五線譜(Staff)',
+        imageUrl: './img/five.png',
+        imageAlt: 'Staff',
+        width:700,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function clef() {
+      Swal.fire({
+        title: '譜號(Clef)',
+        imageUrl: './img/clef.png',
+        imageAlt: 'Clef',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function Acciaccatura_notation() {
+      Swal.fire({
+        title: '裝飾音(Acciaccatura notation)',
+        imageUrl: './img/Acciaccatura_notation.png',
+        imageAlt: 'Acciaccatura_notation',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function bar() {
+      Swal.fire({
+        title: '小節線(Bar)',
+        imageUrl: './img/bar.png',
+        imageAlt: 'Bar',
+        width:1000,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function repeat() {
+      Swal.fire({
+        title: '反覆記號(Repeat Signs)',
+        imageUrl: './img/repeat.png',
+        imageAlt: 'Repeat Signs',
+        width:1100,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+    function repeat1() {
+      Swal.fire({
+        title: '反覆記號(Repeat Signs)',
+        imageUrl: './img/repeat1.png',
+        imageAlt: 'Repeat Signs',
+        width:1100,
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+    }
+  </script>
+  
+
+  <footer>
+      <div class="down">
+        <h2>CONTACT US</h2>
+        <div class="d-flex justify-content-center">
+          <a href="https://www.facebook.com/InflatableIslandPh/"><img src="img/facebook.png"></a>
+          <a href="https://www.youtube.com/watch?v=QftUJUozKxc"><img src="img/youtube.png"></a>
+          <a href="https://www.theinflatableisland.com"><img src="img/globe.png"></a>
+          <a href="https://www.instagram.com/inflatableisland/"><img src="img/instagram.png"></a>
+          <a href="https://twitter.com/inflatableislnd"> <img src="img/twitter.png"></a>
+        </div>
+        <p>COPYRIGHT © 2019 LALUMA WENDY ALL RIGHTS RESERVED</p>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+
+
+    
+</html>
+
