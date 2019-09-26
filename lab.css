@@ -1,21 +1,12 @@
 /*
   https://github.com/0xfe/vexflow/wiki/Animation-with-VexFlow-&-CSS
 */
-
-
-
-#boo {
-
-}
-
 .chart{
   background: rgb(245, 245, 245);
 }
 
 #container > div {
-  width: 960px;
   height: 260px;
-  white-space: nowrap;
 }
 
 #controls {
@@ -27,11 +18,12 @@
 }
 
 .scroll {
-  transition: transform 5s linear, opacity 0.5s ease-out, fill 0.2s linear;
+  transition: transform 9s linear, opacity 0.09s ease-out, fill 0.2s linear;
 }
 
 .scrolling {
-  transform: translate(-400px, 0);
+  transform: translate(-1250px, 0);
+  -webkit-transform:translate(-1250px, 0);
 }
 
 .correct {
@@ -39,7 +31,9 @@
 }
 
 .too-slow {
-  transform: translate(-400px, 2000px);
+  transform: translate(-2000px, 0px);
+  -webkit-transform:translate(-2000px, 0);
+  opacity: 0;
 }
 
 

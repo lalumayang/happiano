@@ -279,3 +279,37 @@
         padding-bottom: 5vw;
 }
 
+
+/*---------------------------------test-------------------------------------*/
+
+/* body {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #554;
+    margin: 0px;
+    height: 80%;
+  } */
+#aaa{
+  padding:30px;
+}
+#title{
+  font-family: 'Oswald', sans-serif;
+  color: rgb(255, 136, 0);
+  font-size: 36px;
+}
+#error {
+  font-family: Courier;
+  color: red;
+  width: 600;
+}
+
+textarea#blah {
+  width: 500px;
+  height: 300px;
+  font-family: Courier;
+  font-size: 12px;
+  padding: 10px;
+  margin: 20px;
+  border: #eee solid 10px;
+}
