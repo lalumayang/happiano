@@ -1,10 +1,9 @@
 /*
   https://codepen.io/anon/pen/YvmZYE
 */
-//soundpack定義一包一包的資料，給audio用，包含number：音符號碼跟url：音檔來源
-var soundpack=[];
-//推一包一包的資料進去，這邊會提供audio做渲染
-var soundpack_index = []; 
+var soundpack=[];//soundpack定義一包一包的資料，給audio用，包含number：音符號碼跟url：音檔來源
+
+var soundpack_index = []; //要載入的音符號碼陣列
 
 var soundpack_index_mapping=[];
 
@@ -105,7 +104,7 @@ soundpack_index_mapping["51"]   = 87;
 
 soundpack_index_mapping["52"]   = 88;
 
-//抓到audio中data-num=id的那個聲音DOM物件
+//推一包一包的資料進去，這邊會提供audio作渲染
 for(var i=1; i<=52; i+=0.5){
   soundpack_index[i] = i;
   var s = "./pianosound_mp3/"+ i + ".mp3";
@@ -120,7 +119,7 @@ var vm = new Vue({
   el: "#app",
   data: {
     sounddata: soundpack,
-    notes: [{"num":24,"time":343},{"num":1,"time":265},{"num":5,"time":380},{"num":5,"time":501},{"num":6,"time":625},{"num":6,"time":748},{"num":5,"time":871},{"num":4,"time":1126},{"num":4,"time":1247},{"num":3,"time":1365},{"num":3,"time":1477},{"num":2,"time":1597},{"num":2,"time":1714},{"num":1,"time":1837}],
+    notes: [{"num":1,"time":150},{"num":1,"time":265},{"num":5,"time":380},{"num":5,"time":501},{"num":6,"time":625},{"num":6,"time":748},{"num":5,"time":871},{"num":4,"time":1126},{"num":4,"time":1247},{"num":3,"time":1365},{"num":3,"time":1477},{"num":2,"time":1597},{"num":2,"time":1714},{"num":1,"time":1837}],
 
     now_note_id: 0,//播放到哪裡
     next_note_id: 0,
@@ -229,18 +228,16 @@ var vm = new Vue({
     ]
   },
   methods: {
-    //播放音符，附上id音符號碼|Volume（0-1）音量
-    playnote: function(id,volume){
+    playnote: function(id,volume){//播放音符，附上id音符號碼|Volume（0-1）音量
       if (id>0){
-				var audio_obj=$("audio[data-num='"+id+"']")[0];
+				var audio_obj=$("audio[data-num='"+id+"']")[0];//抓到audio中data-num=id的那個聲音DOM物件
         audio_obj.volume=volume;//調整音量
         audio_obj.currentTime=0;//倒帶到頭
         audio_obj.play();//播放音樂
       }
     },
     playnext: function(volume){
-      //從notes裡面抓出第now_note_id筆資料
-      var play_note=this.notes[this.now_note_id].num;
+      var play_note=this.notes[this.now_note_id].num;//從notes裡面抓出第now_note_id筆資料
       // console.log('play_note = ' + play_note);
 			play_note = soundpack_index_mapping[play_note.toString()];
       this.playnote(play_note,volume);//播放音符（引數音符號碼、音量）
@@ -261,10 +258,8 @@ var vm = new Vue({
     },
     //停止錄音
     stop_record: function(){
-      //清除計時器
-      clearInterval(this.recorder);
-      //重置錄製時間
-      this.record_time=0;
+      clearInterval(this.recorder);//清除計時器
+      this.record_time=0;//重置錄製時間
       
     },
     //開始播放
@@ -275,20 +270,16 @@ var vm = new Vue({
       var vobj=this;//用與在setInterval能夠存取this，運用vobj當變數裝他
       //播放的計時器
       this.player=setInterval(function(){
-        //如果現在播放時間>下一個音符的時間的話
-        if (vobj.playing_time>=vobj.notes[vobj.next_note_id].time){
-          //播放下一個音符，下一個音符的index+=1
-          vobj.playnext(1);
+        if (vobj.playing_time>=vobj.notes[vobj.next_note_id].time){//如果現在播放時間>下一個音符的時間的話
+          vobj.playnext(1); //播放下一個音符，下一個音符的index+=1
           vobj.next_note_id++;
         }
-        //播放時間+1
-        vobj.playing_time++;
+        vobj.playing_time++;//播放時間+1
       },2);
     },
     //結束播放
     stopplay: function(){
-      //清除正在驅動的player計時器
-      clearInterval(this.player);
+      clearInterval(this.player);//清除正在驅動的player計時器
       this.now_note_id=0;//現在指向的音符位置為0 
       this.next_note_id=0;//歸零現在播放時間
       this.playing_time=0;//下一個音符為0
@@ -303,34 +294,22 @@ var vm = new Vue({
         return true;
       if (this.notes.length==0)
         return false
-      //cur-id上一個播放的音符ID
-      var cur_id=this.now_note_id-1;
-      //如果cur-id《0會發生錯誤，歸零
-      if (cur_id<0) cur_id=0;
-      //取得現在的播放音符
-      var num=this.notes[cur_id].num;
+      
+      var cur_id=this.now_note_id-1;//cur-id上一個播放的音符ID
+      if (cur_id<0) cur_id=0;//如果cur-id<0會發生錯誤，歸零
+      var num=this.notes[cur_id].num; //取得現在的播放音符
       //如果播放與傳進來的音符一樣，傳true，否則執行到最後回傳false
-			
 			//顯示播放音符位置
-			//error
-			if ((num)==id){
-				// console.log('num = '+(num) +' id = '+(id));
+			if ((num)==id)
 				return true;
-			}
 			return false;
-			//error
-
-
     },
     //加入音符到樂譜（如果現在正在錄製中），播放
     addnote: function(id){
-      //如果正在錄製中(錄製時間>0)，就推一個音符資料(音符號碼/播放時間)進去樂譜
       // console.log('id = ' + id);
-
-      if (this.record_time>0)
+      if (this.record_time>0) //如果正在錄製中(錄製時間>0)，就推一個音符資料(音符號碼/播放時間)進去樂譜
         this.notes.push({num: id,time: this.record_time});
-         //播放這音樂
-      this.playnote(id,1);
+      this.playnote(id,1);//播放這音樂
     },
     load_sample: function(){
       var vobj=this;
