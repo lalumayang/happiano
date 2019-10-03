@@ -103,7 +103,6 @@ function start(e) {
 			return note;
 	
 		});
-		console.log(notes[1])
 		tickContext.preFormat().setX(width*0.7);
 		const visibleNoteGroups = [];
 		setInterval(() => {
