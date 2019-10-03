@@ -3,179 +3,31 @@
 
 <head>
 
-    <title>PIANO</title>
+    <title>HAPPY PIANO!</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Condensed|Concert+One|Quicksand|Alegreya+Sans+SC|Ubuntu:400,700|Open+Sans+Condensed:300" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-
-
-    <link rel="stylesheet" href="lab.css">
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="vexflow-min.js"></script>
-    <script src="./lab.js"></script>
-    <script>
-		var chromatic = [
-			["a"],
-			["a#", "bb"],
-			["b"],
-			["c"],
-			["c#", "db"],
-			["d"],
-			["d#", "eb"],
-			["e"],
-			["f"],
-			["f#", "gb"],
-			["g"],
-			["g#", "ab"],
-		];
-
-		var canvasContext = null;
-		var canvasWidth = 0;
-		var canvasHeight = 0;
-
-		var active = false;
-
-		var context = null;
-		var mediaStreamSource = null;
-		var processor = null;
-		var analyser = null;
-		var savedEvent = null;
-
-	  var handleSuccess = function(stream) {
-			console.log(stream)
-	    context = new AudioContext();
-	    mediaStreamSource = context.createMediaStreamSource(stream);
-	    processor = context.createScriptProcessor(0, 1, 1);
-	    mediaStreamSource.connect(processor);
-	    processor.connect(context.destination);
-
-			analyser = context.createAnalyser();
-			analyser.smoothingTimeConstant = 0.5;
-			analyser.minDecibels = -80;
-			analyser.maxDecibels = -10;
-			analyser.connect(processor);
-
-			console.log(context.sampleRate / analyser.fftSize);
-
-			mediaStreamSource.connect(analyser);
-	  };
-
-		function start() {
-	  	navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-      	.then(handleSuccess)
-				.catch(console.log("no"));
-				active = true;
-				draw();
-		}
-
-		function stop() {
-			active = false;
-			context = null;
-			if(mediaStreamSource != null) {
-				for(var index in mediaStreamSource.mediaStream.getTracks()) {
-					mediaStreamSource.mediaStream.getTracks()[index].stop();
-				}
-				mediaStreamSource = null;
-			}
-			if(processor != null) {
-				processor.disconnect();
-				processor = null;
-			}
-			if(analyser != null) {
-				analyser.disconnect();
-				analyser = null;
-			}
-		}
-
-		var canvasContext = null;
-		var canvasWidth = 0;
-		var canvasHeight = 0;
-
-		function draw() {
-			if(canvas == null) {
-				var canvas = document.getElementById("display");
-				canvasWidth = canvas.width;
-				canvasHeight = canvas.height;
-				canvasContext = canvas.getContext("2d");
-			}
-
-			canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
-
-			if(active) {
-				if(analyser != null) {
-					var bins = analyser.frequencyBinCount;
-					var binWidth = canvasWidth / bins;
-					var unitBinHeight = canvasHeight / 255;
-
-					var binFreqInterval = context.sampleRate / bins;
-
-					var spectrum = new Uint8Array(bins);
-					analyser.getByteFrequencyData(spectrum);
-
-					var maxVal = null;
-					var maxIndex = 0;
-					for(var i in spectrum) {
-						if(maxVal == null || maxVal < spectrum[i]) {
-							maxVal = spectrum[i];
-							maxIndex = i;
-						}
-
-						canvasContext.fillStyle = "rgb(" + spectrum[i] + ",0 , 75)";
-						canvasContext.fillRect(i * binWidth, canvasHeight - spectrum[i] * unitBinHeight, binWidth, spectrum[i] * unitBinHeight);
-					}
-
-					var binRange = context.sampleRate / analyser.fftSize;
-					var min = maxIndex * binRange;
-					var max = min + binRange;
-
-					canvasContext.strokeStyle = "black";
-					var middle = binWidth * maxIndex + binWidth / 2;
-					canvasContext.beginPath();
-					canvasContext.moveTo(middle, 0);
-					canvasContext.lineTo(middle, canvasHeight);
-					canvasContext.stroke();
-
-					var mean = (max + min) / 2;
-					var C4 = 261.626;
-					var constant = Math.pow(2, 1/12);
-
-					var halfSteps = Math.round(12 * Math.log10(mean / C4) / Math.log10(2));
-
-					console.log(halfSteps);
-
-					var index = (3 + halfSteps) % chromatic.length;
-					if(index < 0) {
-						index += chromatic.length;
-					}
-
-					document.getElementById("tone").value = chromatic[index];
-				}
-
-				window.requestAnimationFrame(draw);
-			}
-		}
-
-
-		</script>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="beginning.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-green pad">
-        <a class="navbar-brand" href="index.html">PIANO</a>
+        <a class="navbar-brand" href="index.html">PIANO<span class="sr-only">(current)</span></a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse ml-5 " id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="begining.html">Beginner<span class="sr-only">(current)</span></a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="begining.html">Beginner</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Professional</a>
@@ -187,23 +39,60 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="test.html">Music Sheet</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="piano.html">Piano</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="theory.html">Music theory</a>
+                </li>
             </ul>
-        </div>
-    </nav>
 
-    <div class="chart">
-        <div id="container">
-            <div id="boo"></div>
         </div>
-
-        <div id="controls">
-            <button id='start'>start</button>
+      </nav>
+    <div class="block"> 
+        <div class="row">
+            <div class="col-md-12 col-lg-3 d-flex flex-column align-items-center">
+                <div class="button" id="lesson1"> 
+                  <div id="translate"></div>
+                  <a href="./lesson/lesson1.html">LESSON 1</a>
+                </div>
+            </div>
+              <div class="col-md-12 col-lg-3 d-flex flex-column align-items-center">
+                  <div class="button" id="lesson1"> 
+                    <div id="translate"></div>
+                    <a href="lesson1.html">LESSON 2</a>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-3 d-flex flex-column align-items-center">
+                <div class="button" id="lesson1"> 
+                    <div id="translate"></div>
+                    <a href="lesson1.html">LESSON 3</a>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-3 d-flex flex-column align-items-center">
+                <div class="button" id="lesson1"> 
+                  <div id="translate"></div>
+                  <a href="./lesson/lesson1.html">LESSON 1</a>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+    
+              <div class="col-md-12 col-lg-4 d-flex flex-column align-items-center">
+                      <div class="button" id="lesson1"> 
+                          <div id="translate"></div>
+                          <a href="lesson1.html">LESSON 2</a>
+                      </div>
+                  </div>
+                  <div class="col-md-12 col-lg-4 d-flex flex-column align-items-center">
+                          <div class="button" id="lesson1"> 
+                              <div id="translate"></div>
+                              <a href="lesson1.html">LESSON 3</a>
+                       </div>
+                  </div>
+          </div>
         </div>
     </div>
-    <button onclick="start()">start</button>
-    <button onclick="stop()">stop</button>
-    <input type="text" id="tone"/>
-    <canvas id="display" width=500 height=500></canvas>
     <footer>
         <div class="down">
             <h2>CONTACT US</h2>
@@ -223,3 +112,4 @@
 </body>
 
 </html>
+

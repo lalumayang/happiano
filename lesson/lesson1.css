@@ -1,0 +1,44 @@
+/*
+  https://github.com/0xfe/vexflow/wiki/Animation-with-VexFlow-&-CSS
+*/
+:root{
+  --time: 5s;
+}
+
+.chart{
+  background: rgb(245, 245, 245);
+}
+
+#container > div {
+  width: 960px;
+  height: 500px;
+  white-space: nowrap;
+}
+
+#controls {
+  padding: 15px;
+}
+
+#controls > button {
+  margin: 5px;
+}
+
+.scroll {
+  transition: transform var(--time, 5s) linear, opacity 0.5s ease-out, fill 0.2s linear;
+}
+
+.scrolling {
+  transform: translate(-70vw, 0);
+}
+
+.too-slow {
+  transform: translate(-80vw, 0px);
+  opacity: 0;
+  fill:"red";
+  stroke:"red";
+}
+
+.change-color {
+  fill:#12ca3a;
+  stroke:"red";
+}
