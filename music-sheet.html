@@ -1,12 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+
+    <title>HAPPY PIANO!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="music-sheet.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Condensed|Concert+One|Quicksand|Alegreya+Sans+SC|Ubuntu:400,700|Open+Sans+Condensed:300" rel="stylesheet">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js'></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <!-- midi.js package -->
     <script src="static/js/MIDI/AudioDetect.js" type="text/javascript"></script>
     <script src="static/js/MIDI/LoadPlugin.js" type="text/javascript"></script>
@@ -29,10 +37,10 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-green pad">
-        <a class="navbar-brand" href="index.html">PIANO<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="index.html">HAPPIANO<span class="sr-only">(current)</span></a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse ml-5 " id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item ">
@@ -40,13 +48,13 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Professional</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">                        
                         <a class="dropdown-item" href="train.html">練習模式</a>
                         <a class="dropdown-item" href="socre.html">評分模式</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="test.html">Music Sheet</a>
+                    <a class="nav-link" href="music-sheet.html">Music Sheet</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="piano.html">Piano</a>
@@ -55,6 +63,7 @@
                     <a class="nav-link" href="theory.html">Music theory</a>
                 </li>
             </ul>
+
         </div>
     </nav>
     <div id="aaa">
@@ -67,7 +76,6 @@
         <script src="static/support/tabdiv-min.js"></script>
 
         <script>
-            var basepath = '127.0 .0 .1:8080';
             $(function() {
                 MIDI.loadPlugin({
                     soundfontUrl: "static/soundfont/",
@@ -78,83 +86,6 @@
                         var velocity = 127; // how hard the note hits
                         // play the note
                         MIDI.setVolume(0, 127);
-                        //MIDI.noteOn(0, 30, 127, 0);
-                        $.ajax({
-                            url: basepath + '/midi?song=##song##',
-                            success: function(result) {
-                                result = JSON.parse(result);
-                                var data = result.data;
-                                MIDI.Player.loadFile(data);
-                                for (var i = 0; i < MIDI.Player.data.length; i++) {
-                                    console.log(MIDI.Player.data[i][0].event);
-                                }
-                                //MIDI.Player.start();
-                                var sumDelta = [];
-                                var sumDeltaTime = 0;
-                                var channels = [];
-                                var tabIndex = 0;
-                                var blah = '';
-                                blah += 'options stave-distance=30\n';
-                                for (var i = 0; i < MIDI.Player.data.length; i++) {
-                                    var evt = MIDI.Player.data[i][0].event;
-                                    if (typeof(evt.channel) != 'undefined') {
-                                        if (typeof(channels[tabIndex]) == 'undefined') {
-                                            channels[tabIndex] = [];
-                                        }
-                                        if (typeof(channels[tabIndex][evt.channel]) == 'undefined') {
-                                            channels[tabIndex][evt.channel] = '';
-                                            sumDelta[evt.channel] = 0;
-                                        }
-                                    }
-                                    if (evt.type == 'channel' && typeof(evt.subtype) == 'undefined' && typeof(evt.noteNumber) != 'undefined') {
-                                        // note on
-                                    } else if (evt.type == 'channel' && typeof(evt.subtype) != 'undefined' && evt.subtype == 'noteOff' && typeof(evt.noteNumber) != 'undefined') {
-                                        // note off
-                                        var str = 'notes ';
-                                        if (evt.deltaTime == 128) {
-                                            str += ':q';
-                                        } else if (evt.deltaTime == 64) {
-                                            str += ':8';
-                                        } else if (evt.deltaTime == 32) {
-                                            str += ':16';
-                                        } else if (evt.deltaTime == 256) {
-                                            str += ':h';
-                                        } else if (evt.deltaTime == 512) {
-                                            str += ':w';
-                                        }
-                                        var key = MIDI.noteToKey[evt.noteNumber]
-                                        var _arr = key.split('');
-                                        _arr[_arr.length] = _arr[_arr.length - 1];
-                                        _arr[_arr.length - 2] = '/';
-                                        key = _arr.join('');
-                                        str += ' ' + key;
-                                        sumDelta[evt.channel] += evt.deltaTime;
-                                        var changedTab = false;
-                                        if (sumDelta[evt.channel] >= 128 * 4) {
-                                            str += ' | ';
-                                            sumDelta[evt.channel] = 0;
-                                            changedTab = true;
-                                        }
-                                        channels[tabIndex][evt.channel] += str + '\n';
-                                        if (changedTab && evt.channel == result.maxChannel) {
-                                            sumDeltaTime++;
-                                            if (sumDeltaTime == 4) {
-                                                tabIndex++;
-                                                sumDeltaTime = 0;
-                                            }
-                                        }
-                                    }
-                                }
-                                for (var i in channels) {
-                                    blah += 'tabstave notation=true\n';
-                                    for (var j in channels[i]) {
-                                        blah += 'voice\n';
-                                        blah += channels[i][j];
-                                    }
-                                }
-                                $('#blah').val(blah);
-                            }
-                        });
 
                         // vexflow
                         Vex.Flow.Artist.DEBUG = true;
@@ -181,9 +112,7 @@
                                 $("#error").text(e.message);
                             }
                         }
-                        //$("#blah").keyup(_.throttle(render, 250));
-                        $('#playBtn').click(render)
-                        //render();
+                        $('#playBtn').click(render);
                         // vexflow end
                         playMIDI();
                     }
@@ -274,43 +203,51 @@
         </script>
 
         <textarea id="blah">options stave-distance=30
-tabstave notation=true
-notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h (7/5.7/6) :8 5/5 :q 5/5
-tabstave notation=true
-notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h (5/5.5/6) :8 3/5 :q 3/5
-tabstave notation=true
-notes :q (5-5-7-3/5.5-5/6) | (5/5.5/6) :8 7-8/5 :q 7/5 3/5 | (5/5.5/6) :8 7-8/5 :q 7/5 5/5 
-tabstave notation=true
-notes :q (3-5/5.3/6)| :w (3/6.2/5)
-tabstave notation=true
-notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h 5/5 :8 3/5 :q 3/5
+            tabstave notation=true
+            notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h (7/5.7/6) :8 5/5 :q 5/5
+            tabstave notation=true
+            notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h (5/5.5/6) :8 3/5 :q 3/5
+            tabstave notation=true
+            notes :q (5-5-7-3/5.5-5/6) | (5/5.5/6) :8 7-8/5 :q 7/5 3/5 | (5/5.5/6) :8 7-8/5 :q 7/5 5/5 
+            tabstave notation=true
+            notes :q (3-5/5.3/6)| :w (3/6.2/5)
+            tabstave notation=true
+            notes :q (2-2-3-5/4.2-2/5) | (5-3-2/4.5/5) 5/5 | (3-3-5-7/5.3-3/6) | :h 5/5 :8 3/5 :q 3/5
 
-tabstave
-notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 7/5 :8 5/5 :q 5/5
-notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 5/5 :8 3/5 :q 3/5
-notes :q 5-5-7-3/5 | 5/5 :8 7-8/5 :q 7/5 3/5 | 5/5 :8 7-8/5 :q 7/5 5/5 
-notes :q 5/5 :8 7-8/5 :q 7/5 5/5 | 3-5/5 :h 3/6
-notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 5/5 :8 3/5 :q 3/5  </textarea>
+            tabstave
+            notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 7/5 :8 5/5 :q 5/5
+            notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 5/5 :8 3/5 :q 3/5
+            notes :q 5-5-7-3/5 | 5/5 :8 7-8/5 :q 7/5 3/5 | 5/5 :8 7-8/5 :q 7/5 5/5 
+            notes :q 5/5 :8 7-8/5 :q 7/5 5/5 | 3-5/5 :h 3/6
+            notes :q 2-2-3-5/4 | 5-3-2/4 5/5 | 3-3-5-7/5 | :h 5/5 :8 3/5 :q 3/5 
+        </textarea>
 
         <!-- <textarea id="blah"></textarea> -->
         <input type="button" id="playBtn" value="PLAY" />
         <canvas width="700" height="100" id="canva"></canvas>
 
     </div>
+
+      
+ 
+
+    <footer>
+        <div class="down">
+            <h2>CONTACT US</h2>
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/InflatableIslandPh/"><img src="img/facebook.png"></a>
+                <a href="https://www.youtube.com/watch?v=QftUJUozKxc"><img src="img/youtube.png"></a>
+                <a href="https://www.theinflatableisland.com"><img src="img/globe.png"></a>
+                <a href="https://www.instagram.com/inflatableisland/"><img src="img/instagram.png"></a>
+                <a href="https://twitter.com/inflatableislnd"> <img src="img/twitter.png"></a>
+            </div>
+            <p>COPYRIGHT © 2019 LALUMA WENDY ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
-<footer>
-    <div class="down">
-        <h2>CONTACT US</h2>
-        <div class="d-flex justify-content-center">
-            <a href="https://www.facebook.com/InflatableIslandPh/"><img src="img/facebook.png"></a>
-            <a href="https://www.youtube.com/watch?v=QftUJUozKxc"><img src="img/youtube.png"></a>
-            <a href="https://www.theinflatableisland.com"><img src="img/globe.png"></a>
-            <a href="https://www.instagram.com/inflatableisland/"><img src="img/instagram.png"></a>
-            <a href="https://twitter.com/inflatableislnd"> <img src="img/twitter.png"></a>
-        </div>
-        <p>COPYRIGHT © 2019 LALUMA WENDY ALL RIGHTS RESERVED</p>
-    </div>
-</footer>
-
 </html>
+

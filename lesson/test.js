@@ -245,3 +245,7 @@ false- Default. The event handler is executed in the bubbling phase
 */
 window.addEventListener( "load", start, false );
 
+
+
+
+
