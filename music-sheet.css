@@ -22,13 +22,47 @@
   -webkit-transition: all .15s ease-in-out;
   transition: all .15s ease-in-out;
 }
+#playBtn:hover{
+  background-color: rgb(83, 151, 156);
+  color: white;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(255, 255, 255, 0.57);
+  transition: all 0.4s ease 0s;
+}
 textarea#blah {
-  width: 500px;
+  /* width: 50%; */
   height: 300px;
   font-family: Courier;
   font-size: 12px;
   padding: 10px;
-  margin: 20px;
+  margin: 0 10px 0 0;
   border: rgb(83, 151, 156) double 5px;
 }
 
+@media (max-width: 767px) {
+  textarea#blah {
+    width: 100%;
+  }
+  .canva{
+    width: 100%;
+    height:100px;
+  }
+}
+@media (max-width: 991px){
+  textarea#blah {
+    width: 50%;
+  }
+  .canva{
+    width: 50%;
+    height:100px;
+  }
+}
+@media (max-width: 1599px){
+  textarea#blah {
+    width: 50%;
+  }
+  .canva{
+    width: 50%;
+    height:100px;
+  }
+}
