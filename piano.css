@@ -159,7 +159,7 @@ i.fa-circle {
     height: 105px;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 1260px) {
   .white {
     width: 20px;
     height: 180px;
@@ -183,7 +183,7 @@ i.fa-circle {
     margin-right: -7px;
   } */
   .white {
-    width: 14.7px;
+    width: 14.5px;
     height: 125px;
   }
   .black{
