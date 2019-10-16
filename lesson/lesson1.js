@@ -22,6 +22,7 @@ function start(e) {
     // stave.drawVertical($("rect").x);
 
     stave2.setContext(context).draw();
+    stave.drawVerticalBar(66,true);
 
     //大括弧 
     var connector = new VF.StaveConnector(stave, stave2);
@@ -33,7 +34,8 @@ function start(e) {
     connector.draw();
     line.draw();
 
-
+    
+//    new VF.BarNote();
     document.getElementById('start').addEventListener('click', (e) => {
         //c4的int_value為60
         var notes = [
