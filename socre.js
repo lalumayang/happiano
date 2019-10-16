@@ -20,7 +20,7 @@ function start(e) {
 	document.getElementById('start').addEventListener('click',(e)=>{
 	//c4的int_value為60
 
-	var audio = new Audio("audio.mp3");
+	var audio = new Audio("aa.mp3");
 	audio.play();
 	var formatter = new VF.Formatter();
 		var notes = [
