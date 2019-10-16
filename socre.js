@@ -19,6 +19,9 @@ function start(e) {
 	
 	document.getElementById('start').addEventListener('click',(e)=>{
 	//c4的int_value為60
+
+	var audio = new Audio("audio.mp3");
+	audio.play();
 	var formatter = new VF.Formatter();
 		var notes = [
 			['b', '', '4', 'qr'],
@@ -109,6 +112,7 @@ function start(e) {
 				})
 			},36000);
 		})
+		
 }
 
 window.addEventListener( "load", start, false );
