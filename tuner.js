@@ -13,7 +13,6 @@ var chromatic = [
 			["g#", "ab"],
 		];
 
-
 var active = false;
 
 var context = null;
@@ -47,26 +46,8 @@ function start() {
         .then(handleSuccess)
         .catch(console.log("no"));
     active = true;
-    draw();
-}
 
-function stop() {
-    active = false;
-    context = null;
-    if (mediaStreamSource != null) {
-        for (var index in mediaStreamSource.mediaStream.getTracks()) {
-            mediaStreamSource.mediaStream.getTracks()[index].stop();
-        }
-        mediaStreamSource = null;
-    }
-    if (processor != null) {
-        processor.disconnect();
-        processor = null;
-    }
-    if (analyser != null) {
-        analyser.disconnect();
-        analyser = null;
-    }
+    draw();
 }
 
 // function stop() {
@@ -114,35 +95,36 @@ function draw() {
                 if (maxVal == null || maxVal < spectrum[i]) {
                     maxVal = spectrum[i];
                     maxIndex = i;
-
                 }
-                // console.log("max: "+maxVal)
-                var binRange = context.sampleRate / analyser.fftSize;
-                var min = maxIndex * binRange;
-                var max = min + binRange;
-
-                // canvasContext.strokeStyle = "black";
-                // var middle = binWidth * maxIndex + binWidth / 2;
-                // canvasContext.beginPath();
-                // canvasContext.moveTo(middle, 0);
-                // canvasContext.lineTo(middle, canvasHeight);
-                // canvasContext.stroke();
-                var mean = (max + min) / 2;
-                var C4 = 261.626;
-                var constant = Math.pow(2, 1 / 12);
-
-                var halfSteps = Math.round(12 * Math.log2(mean / C4) / Math.log2(2));
-
-                // console.log("halfstep: "+halfSteps);
-
-                var index = (3 + halfSteps) % chromatic.length;
-                if (index < 0) {
-                    index += chromatic.length;
-                }
-                noteValue = chromatic[index];
-                document.getElementById("tone").value = noteValue;
             }
+            // console.log("max: "+maxVal)
+            var binRange = context.sampleRate / analyser.fftSize;
+            var min = maxIndex * binRange;
+            var max = min + binRange;
 
-            window.requestAnimationFrame(draw);
+            // canvasContext.strokeStyle = "black";
+            // var middle = binWidth * maxIndex + binWidth / 2;
+            // canvasContext.beginPath();
+            // canvasContext.moveTo(middle, 0);
+            // canvasContext.lineTo(middle, canvasHeight);
+            // canvasContext.stroke();
+
+            var mean = (max + min) / 2;
+            var C4 = 261.626;
+            var constant = Math.pow(2, 1 / 12);
+
+            var halfSteps = Math.round(12 * Math.log2(mean / C4) / Math.log2(2));
+
+            // console.log("halfstep: "+halfSteps);
+
+            var index = (3 + halfSteps) % chromatic.length;
+            if (index < 0) {
+                index += chromatic.length;
+            }
+            noteValue = chromatic[index];
+            document.getElementById("tone").value = noteValue;
         }
+
+        window.requestAnimationFrame(draw);
     }
+}
