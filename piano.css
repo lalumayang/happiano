@@ -159,6 +159,17 @@ i.fa-circle {
     height: 105px;
   }
 }
+@media (max-width: 1280px) {
+  .white {
+    width: 20px;
+    height: 180px;
+  }
+  .black{
+    width: 13px;
+    height: 95px;
+    margin-left: -6px;
+  }
+}
 
 @media (max-width: 991px) {
   /* .white {

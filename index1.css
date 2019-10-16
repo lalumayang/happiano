@@ -58,7 +58,7 @@
 
 .block h2 {
   display: block;
-  color: #ffc6b5;
+  color: #ffffff;
   text-align: center;
   font-size: 4vmin;
   margin: 4vw 0 3vw 0;
@@ -70,7 +70,7 @@
 }
 
 .block p {
-  color: #ffb598;
+  color: #ffffff;
   text-align: center;
   letter-spacing: 3px;
   font-size: 3vmin;
@@ -280,7 +280,14 @@
       margin-bottom: 40px; } }
 
 .content {
-  padding-bottom: 5vw;
+  padding-bottom: 4vw;
 }
 
+.pppp{
+  /* background:url(img/ss.jpg); */
+  height:400px;
+  width: auto;
+  background-size: cover;
+  background-position: center;
+}
 
