@@ -69,19 +69,12 @@ function start() {
 // 	}
 // }
 
-var canvasContext = null;
-var canvasWidth = 0;
-var canvasHeight = 0;
-
 function draw() {
 
-    canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
     if (active) {
         if (analyser != null) {
             var bins = analyser.frequencyBinCount;
-            var binWidth = canvasWidth / bins;
-            var unitBinHeight = canvasHeight / 255;
 
             var binFreqInterval = context.sampleRate / bins;
 
