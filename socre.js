@@ -114,26 +114,6 @@ function start(e) {
         }
 
         var interval = setInterval(change, timer);
-        //					note = notes.shift();
-        //					let note_temp=this.note;
-        //					let pitch = document.getElementById("tone").value;
-        //					let keys = note_temp.keys[0];
-        //					var id = note_temp.attrs.id;
-        //					console.log(keys[0]);
-        //					console.log(pitch[0]);
-        //					if(pitch[0]==keys[0]){
-        //						console.log("same!!!" + id);
-        //						count=1;
-        //					}
-        //					else{
-        //						console.log("different!!!" + id);
-        //						count=0;
-        //					}
-        //					total=total+count;//答對幾個
-        //					total_socre=(total/32)*100;//答對率 百分比
-        //					console.log(total_socre);
-        // let timer=(1000/note.duration)*4;
-        // console.log('timer '+timer);
 
         window.setTimeout(() => {
             Swal.fire({
