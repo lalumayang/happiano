@@ -10,7 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index1.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Condensed|Concert+One|Quicksand|Alegreya+Sans+SC|Ubuntu:400,700|Open+Sans+Condensed:300" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
@@ -18,24 +18,23 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-green pad">
-        <a class="navbar-brand" href="index.html">PIANO<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="index.html">HAPPIANO<span class="sr-only">(current)</span></a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse ml-5 " id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                            <a class="nav-link" href="theory.html">Music theory</a>
+                        </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="begining.html">Beginner</a>
                 </li>
+                <li class="nav-item ">
+                        <a class="nav-link" href="socre.html">Intermediate</a>
+                    </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Professional</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">                        
-                        <a class="dropdown-item" href="train.html">練習模式</a>
-                        <a class="dropdown-item" href="socre.html">評分模式</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="test.html">Music Sheet</a>
+                    <a class="nav-link" href="music-sheet.html">Music Sheet</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="piano.html">Piano</a>
@@ -47,94 +46,58 @@
     <div id="index_top">
 
         <div class="index d-flex flex-column align-items-center">
-            <span class="top">PIANO</span>
+            <span class="top">HAPPIANO</span>
             <span class="mid">
                 <hr style="float:left;width:3em;"/>
-                <font style="float:left;">鋼琴之旅</font>
+                <fonts style="float:left;">鋼琴之旅</fonts>
                 <hr style="float:left;width:3em;"/></span>
         </div>
     </div>
        
 
-    <div class="container author"></div>
-        <div class="row">
-            <div class="col-md-12 col-lg-4 d-flex flex-column align-items-center">
-                <img class="pic" src="img/home.png">
-                <div class="name">
-                    <span>home</span>
-                    <a href="index.html">
-                        <p>More</p>
-                    </a>
-                </div>
+    <!-- <div class="container author"></div> -->
+    <div class="row">
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/home.png">
+            <div class="name s">
+                <a href="index.html">home</a>
             </div>
-            <div class="col-md-12 col-lg-4  d-flex flex-column align-items-center">
-                <img class="pic" src="img/begining.png">
-                <div class="name">
-                    <span>beginner</span>
-                    <a href="begining.html">
-                        <p>More</p>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/begining.png">
+            <div class="name s">
+                <a href="begining.html">beginner</a>
             </div>
-            <div class="col-md-12 col-lg-4  d-flex flex-column align-items-center">
-                <img class="pic" src="img/advanced.jpg">
-                <div class="name">
-                    <span class="shop">professional</span>
-                    <a href="socre.html">
-                        <p>More</p>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/advanced.png">
+            <div class="name s">
+                <a href="socre.html">professional</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/sheet.png">
+            <div class="name ss">
+                <a href="music-sheet.html">Music Sheet</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/piano.png">
+            <div class="name ss">
+                <a href="piano.html">Piano</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-6 d-flex flex-column align-items-center">
+            <img class="pic" src="img/theory.png">
+            <div class="name ss">
+                <a href="theory.html">Music theory</a>
             </div>
         </div>
     </div>
+
+    
+    </div>
     <div class="block">
-        <!--<h2>什麼是獨角獸</h2>
-        <p>獨角獸是一種傳說生物，形象通常為頭上長有獨角的白馬。<br>或是指成立不到 10 年但估值10億美元（$1billion）以上，又未在股票市場上市的科技創業公司，2013年底，風險創投專家Aileen Lee在一篇文章中以此一詞彙形容此類企業，後風行於創業界。</p>
-        
-        <section class="content-container container">
-            <div class="col-md-12 line-container fast-and-fun-container">
-                <div class="col-md-6 col-sm-12 mask-img-container right-side">
-                    <svg class="svg-mask" width="100" height="100" viewBox="0 18 90 64">
-                        <defs>
-                            <mask id="svgmask" x="0" y="0" width="100" height="100">
-                                <image width="100" height="100" xlink:href="img/dd.png"></image>
-                            </mask>
-                        </defs>
-                        <image width="100" height="100" class="masked-img" mask="url(#svgmask)" xlink:href="img/piano.jpg"></image>
-                    </svg>
-            </div>
-                <div class="col-md-6 col-sm-12 half-line left-side align-height-with-resize">
-                    <div class="fast_and_funny half-line-container sp-half-line-1">
-                        <article class="line-article">
-                            <h2 class="line-title">Fast and fun way to learn piano</h2>
-                            <p class="line-text">From beginner to pro, gain all the essential skills you need to make your musical dreams come true.  Whether you want to learn piano on your own, or you’re starting from scratch, Simply Piano will guide you so you can play the songs you love.</p>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="content-container container">
-            <div class="col-md-12 line-container fast-and-fun-container">
-                <div class="col-md-6 col-sm-12 mask-img-container right-side">
-                    <svg class="svg-mask" width="100" height="100" viewBox="0 18 90 64">
-                        <defs>遮罩
-                            <mask id="svgmask" x="0" y="0" width="100" height="100">
-                                <image width="100" height="100" xlink:href="img/dd.png"></image>
-                            </mask>
-                        </defs>
-                        <image width="100" height="100" class="masked-img" mask="url(#svgmask)" xlink:href="img/piano.jpg"></image>
-                    </svg>
-            </div>
-                <div class="col-md-6 col-sm-12 half-line left-side align-height-with-resize">
-                    <div class="fast_and_funny half-line-container sp-half-line-1">
-                        <article class="line-article">
-                            <h2 class="line-title">Get instant feedback</h2>
-                            <p class="line-text">Works with any piano or keyboard, your device listens to which notes you’re playing through the microphone.</p>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>  -->  
         <section>
             <div class="container content">
                 <div class="row no-gutters">
@@ -146,7 +109,7 @@
                             </div>
                         </div>
                         <div class="pl-md-5 ml-md-5 mb-5">
-                            <p>From beginner to pro, gain all the essential skills you need to make your musical dreams come true.  Whether you want to learn piano on your own, or you’re starting from scratch, Simply Piano will guide you so you can play the songs you love.</p>
+                            <p>From beginner to pro, gain all the essential skills you need to make your musical dreams come true.  Whether you want to learn piano on your own, or you’re starting from scratch, Piano will guide you so you can play the songs you love.</p>
                         </div>
                     </div>
                 </div>
