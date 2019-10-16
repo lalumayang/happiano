@@ -1,17 +1,21 @@
 var chromatic = [
-			["a"],
-			["a#", "bb"],
-			["b"],
-			["c"],
-			["c#", "db"],
-			["d"],
-			["d#", "eb"],
-			["e"],
-			["f"],
-			["f#", "gb"],
-			["g"],
-			["g#", "ab"],
-		];
+   ["a"],
+   ["a#", "bb"],
+   ["b"],
+   ["c"],
+   ["c#", "db"],
+   ["d"],
+   ["d#", "eb"],
+   ["e"],
+   ["f"],
+   ["f#", "gb"],
+   ["g"],
+   ["g#", "ab"],
+  ];
+
+var canvasContext = null;
+var canvasWidth = 0;
+var canvasHeight = 0;
 
 var active = false;
 
@@ -47,34 +51,48 @@ function start() {
         .catch(console.log("no"));
     active = true;
 
+
     draw();
 }
 
 // function stop() {
-// 	active = false;
-// 	context = null;
-// 	if(mediaStreamSource != null) {
-// 		for(var index in mediaStreamSource.mediaStream.getTracks()) {
-// 			mediaStreamSource.mediaStream.getTracks()[index].stop();
-// 		}
-// 		mediaStreamSource = null;
-// 	}
-// 	if(processor != null) {
-// 		processor.disconnect();
-// 		processor = null;
-// 	}
-// 	if(analyser != null) {
-// 		analyser.disconnect();
-// 		analyser = null;
-// 	}
+//  active = false;
+//  context = null;
+//  if(mediaStreamSource != null) {
+//   for(var index in mediaStreamSource.mediaStream.getTracks()) {
+//    mediaStreamSource.mediaStream.getTracks()[index].stop();
+//   }
+//   mediaStreamSource = null;
+//  }
+//  if(processor != null) {
+//   processor.disconnect();
+//   processor = null;
+//  }
+//  if(analyser != null) {
+//   analyser.disconnect();
+//   analyser = null;
+//  }
 // }
 
-function draw() {
+var canvasContext = null;
+var canvasWidth = 0;
+var canvasHeight = 0;
 
+function draw() {
+    if (canvas == null) {
+        var canvas = document.getElementById("display");
+        canvasWidth = canvas.width;
+        canvasHeight = canvas.height;
+        canvasContext = canvas.getContext("2d");
+    }
+
+    canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
     if (active) {
         if (analyser != null) {
             var bins = analyser.frequencyBinCount;
+            var binWidth = canvasWidth / bins;
+            var unitBinHeight = canvasHeight / 255;
 
             var binFreqInterval = context.sampleRate / bins;
 
