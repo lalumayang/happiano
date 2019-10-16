@@ -11,40 +11,43 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="./index.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Condensed|Concert+One|Quicksand|Alegreya+Sans+SC|Ubuntu:400,700|Open+Sans+Condensed:300" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="./socre.css">
+    <link rel="stylesheet" href="./lesson/lesson1.css">
 
-    <link rel="stylesheet" href="./lesson1.css">
+
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="../vexflow-min.js"></script>
-    <script src="./lesson5.js"></script>
-    <script src="../tuner.js"></script>
+    <script src="./vexflow-min.js"></script>
+    <script src="./littlestar.js"></script>
+    <script src="./tuner.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
 
-<body onload=s tart()>
+<body onload=start()>
     <nav class="navbar navbar-expand-lg navbar-light bg-green pad">
-        <a class="navbar-brand" href="../index.html">HAPPIANO<span class="sr-only">(current)</span></a>
+        <a class="navbar-brand" href="./index.html">HAPPIANO<span class="sr-only">(current)</span></a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
         <div class="collapse navbar-collapse ml-5 " id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="../theory.html">Music theory</a>
+                    <a class="nav-link" href="./theory.html">Music theory</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="../begining.html">Beginner</a>
+                    <a class="nav-link" href="./begining.html">Beginner</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="../socre.html">Intermediate</a>
+                    <a class="nav-link" href="intermedia.html">Intermediate</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="../music-sheet.html">Music Sheet</a>
+                    <a class="nav-link" href="./music-sheet.html">Music Sheet</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="../piano.html">Piano</a>
+                    <a class="nav-link" href="./piano.html">Piano</a>
                 </li>
 
             </ul>
@@ -54,21 +57,35 @@
         <div id="container">
             <div id="boo"></div>
             <div id="controls">
-                <button id='start'>start</button>
+                <button id="start">start</button>
+            </div>
+            <div id="word">
+                <h3>小星星</h3>
             </div>
         </div>
+        <!-- <script>
+            function clef() {
+              Swal.fire({
+                title: '正確率',
+                html: document.getElementById("score").value+'%',
+                showConfirmButton: false,
+                showCloseButton: true
+              })
+            }
+        </script> -->
+
     </div>
     <input type="hidden" id="tone" />
-    <canvas id="display" width=300 height=100></canvas>
+    <canvas id="display" width="5" height="5"></canvas>
     <footer>
         <div class="down">
             <h2>CONTACT US</h2>
             <div class="d-flex justify-content-center">
-                <a href="https://www.facebook.com/InflatableIslandPh/"><img src="../img/facebook.png"></a>
-                <a href="https://www.youtube.com/watch?v=QftUJUozKxc"><img src="../img/youtube.png"></a>
-                <a href="https://www.theinflatableisland.com"><img src="../img/globe.png"></a>
-                <a href="https://www.instagram.com/inflatableisland/"><img src="../img/instagram.png"></a>
-                <a href="https://twitter.com/inflatableislnd"> <img src="../img/twitter.png"></a>
+                <a href="https://www.facebook.com/InflatableIslandPh/"><img src="./img/facebook.png"></a>
+                <a href="https://www.youtube.com/watch?v=QftUJUozKxc"><img src="./img/youtube.png"></a>
+                <a href="https://www.theinflatableisland.com"><img src="./img/globe.png"></a>
+                <a href="https://www.instagram.com/inflatableisland/"><img src="./img/instagram.png"></a>
+                <a href="https://twitter.com/inflatableislnd"> <img src="./img/twitter.png"></a>
             </div>
             <p>COPYRIGHT © 2019 LALUMA WENDY ALL RIGHTS RESERVED</p>
         </div>

@@ -9,8 +9,7 @@ body {
 }
 
 #container > div {
-    width: 960px;
-
+    width: auto;
     height: auto;
     white-space: nowrap;
 }
@@ -27,9 +26,24 @@ body {
     margin: 5vh 12vw;
 }
 
+#word > img {
+    width: 70vw;
+    height: auto;
+
+}
+
 #word > h3 {
+    font-size: 1.5rem;
     font-family: 'Noto Sans TC', sans-serif;
 }
+
+#word > p {
+    font-size: 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    word-break: break-all;
+    white-space: normal;
+}
+
 
 .scroll {
     transition: transform var(--time, 5s) linear, opacity 0.5s ease-out, fill 0.2s linear;
