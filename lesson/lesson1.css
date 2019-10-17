@@ -37,6 +37,10 @@ body {
     font-family: 'Noto Sans TC', sans-serif;
 }
 
+#word > #point{
+    color:'red'
+}
+
 #word > p {
     font-size: 1rem;
     font-family: 'Noto Sans TC', sans-serif;
