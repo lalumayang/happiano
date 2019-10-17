@@ -22,7 +22,7 @@ function start(e) {
     // stave.drawVertical($("rect").x);
 
     stave2.setContext(context).draw();
-    stave.drawVerticalBar(66,true);
+    stave.drawVerticalBar(85,true);
 
     //大括弧 
     var connector = new VF.StaveConnector(stave, stave2);
